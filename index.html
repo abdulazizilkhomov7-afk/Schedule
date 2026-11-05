@@ -1,299 +1,1085 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maktab va To'garak Jadvali</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maktab va To'garak Jadvali</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+--bg:#f8fafc;
+--card:#fff;
+--text:#1e293b;
+--muted:#64748b;
+--blue:#2563eb;
+--blue2:#1d4ed8;
+--orange:#f97316;
+--border:#e2e8f0;
+--input:#fff;
+--shadow:0 4px 12px #0000000d;
+--hero:linear-gradient(135deg,#1e40af,#3b82f6)
+}
+[data-theme=dark]{
+--bg:#0f172a;
+--card:#1e293b;
+--text:#f8fafc;
+--muted:#94a3b8;
+--blue:#3b82f6;
+--blue2:#60a5fa;
+--border:#334155;
+--input:#0f172a;
+--shadow:0 4px 12px #0005;
+--hero:linear-gradient(135deg,#0284c7,#0f172a)
+}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:'Plus Jakarta Sans',sans-serif;
+transition:background-color .25s,color .25s,border-color .25s
+}
+body{
+background:var(--bg);
+color:var(--text);
+line-height:1.6
+}
+.navbar{
+position:sticky;
+top:0;
+z-index:10;
+background:var(--blue);
+color:white;
+padding:14px 5%
+}
+.nav-container{
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px
+}
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+font-size:20px;
+font-weight:700
+}
+.brand-icon{
+background:#ffffff33;
+padding:10px 13px;
+border-radius:10px
+}
+.nav-links{
+display:flex;
+gap:22px
+}
+.nav-link{
+color:#ffffffdf;
+text-decoration:none
+}
+.nav-link:hover{color:white}
+.theme-btn{
+background:#ea580c;
+color:white;
+border:0;
+border-radius:22px;
+padding:10px 16px;
+cursor:pointer;
+font-weight:700
+}
+.hero-section{
+background:var(--hero);
+color:white;
+padding:65px 5%
+}
+.hero-container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center
+}
+.badge{
+display:inline-block;
+background:#ffffff30;
+border-radius:20px;
+padding:7px 14px;
+font-size:13px;
+font-weight:700;
+margin-bottom:20px
+}
+.hero-title{
+font-size:clamp(30px,4vw,46px);
+line-height:1.2;
+margin-bottom:16px
+}
+.hero-title span{color:#fde047}
+.hero-subtitle{
+max-width:550px;
+opacity:.9;
+margin-bottom:25px
+}
+.hero-buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap
+}
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+padding:12px 20px;
+border-radius:10px;
+border:0;
+text-decoration:none;
+font-size:15px;
+font-weight:700;
+cursor:pointer
+}
+.btn-primary{
+background:white;
+color:var(--blue)
+}
+.btn-outline{
+background:transparent;
+color:white;
+border:2px solid #ffffff80
+}
+.phone-mockup{
+background:#0f172a;
+border:8px solid #334155;
+border-radius:35px;
+width:280px;
+padding:16px;
+box-shadow:0 20px 40px #0005
+}
+.phone-header{
+color:white;
+text-align:center;
+margin-bottom:15px
+}
+.notch{
+display:block;
+background:#334155;
+width:60px;
+height:10px;
+border-radius:10px;
+margin:auto
+}
+.phone-screen{
+display:grid;
+gap:12px
+}
+.phone-card{
+background:white;
+color:#1e293b;
+border-radius:12px;
+padding:12px;
+display:flex;
+align-items:center;
+gap:12px
+}
+.phone-card i{
+color:#2563eb;
+font-size:20px
+}
+.phone-card h4{font-size:14px}
+.phone-card p{
+font-size:11px;
+color:#64748b
+}
+.main-container{
+max-width:1200px;
+margin:-25px auto 40px;
+padding:0 22px;
+position:relative
+}
+.stats-bar{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-bottom:45px
+}
+.stat-card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:16px;
+padding:22px;
+display:flex;
+align-items:center;
+gap:18px;
+box-shadow:var(--shadow)
+}
+.stat-card i{
+font-size:25px;
+color:var(--blue);
+background:#2563eb18;
+padding:15px;
+border-radius:12px
+}
+.stat-card h3{font-size:27px}
+.stat-card p{
+font-size:13px;
+color:var(--muted)
+}
+.form-section,.schedule-section{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:20px;
+padding:30px;
+margin-bottom:35px;
+box-shadow:var(--shadow)
+}
+.section-header{margin-bottom:25px}
+.section-header h2{
+font-size:23px;
+display:flex;
+gap:10px;
+align-items:center
+}
+.section-header h2 i{color:var(--blue)}
+.section-header p{
+color:var(--muted);
+font-size:14px
+}
+.form-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px;
+margin-bottom:22px
+}
+.full-width{grid-column:span 2}
+.input-group{
+display:flex;
+flex-direction:column;
+gap:7px
+}
+.input-group label{
+font-size:14px;
+font-weight:700
+}
+.input-group input,.input-group select,.filter-type-group select{
+width:100%;
+padding:12px 14px;
+border:1px solid var(--border);
+border-radius:10px;
+background:var(--input);
+color:var(--text);
+outline:none
+}
+.input-group input:focus,.input-group select:focus{
+border-color:var(--blue)
+}
+.form-actions,.modal-actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap
+}
+.btn-submit{
+background:var(--blue);
+color:white
+}
+.btn-reset{
+background:transparent;
+border:1px solid var(--border);
+color:var(--muted)
+}
+.filter-controls{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+margin-bottom:25px
+}
+.filter-group{
+display:flex;
+gap:7px;
+overflow-x:auto;
+padding-bottom:5px
+}
+.filter-btn{
+white-space:nowrap;
+padding:8px 13px;
+border:1px solid var(--border);
+border-radius:8px;
+background:var(--input);
+color:var(--text);
+font-weight:700;
+cursor:pointer
+}
+.filter-btn.active,.filter-btn:hover{
+background:var(--blue);
+color:white;
+border-color:var(--blue)
+}
+.days-container{
+display:flex;
+flex-direction:column;
+gap:25px
+}
+.day-section{
+background:#2563eb08;
+border:1px solid var(--border);
+border-radius:16px;
+padding:22px
+}
+.day-header{
+font-size:20px;
+font-weight:800;
+color:var(--blue);
+border-bottom:2px solid var(--border);
+padding-bottom:10px;
+margin-bottom:18px
+}
+.cards-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+gap:18px
+}
+.card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:14px;
+padding:20px;
+box-shadow:var(--shadow);
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+gap:18px
+}
+.card-tag{
+display:inline-block;
+padding:4px 12px;
+border-radius:20px;
+font-size:11px;
+font-weight:800
+}
+.tag-dars{
+background:#2563eb18;
+color:var(--blue)
+}
+.tag-togarak{
+background:#f9731618;
+color:var(--orange)
+}
+.card-title{
+font-size:18px;
+margin-top:9px
+}
+.card-info{
+display:grid;
+gap:7px;
+color:var(--muted);
+font-size:13px;
+margin-top:12px
+}
+.card-bottom-actions{
+display:flex;
+gap:8px;
+border-top:1px solid var(--border);
+padding-top:13px
+}
+.btn-card-edit,.btn-card-delete{
+border:0;
+border-radius:8px;
+padding:9px;
+cursor:pointer;
+font-weight:700
+}
+.btn-card-edit{
+flex:1;
+background:#2563eb18;
+color:var(--blue)
+}
+.btn-card-delete{
+background:#ef444418;
+color:#ef4444
+}
+.modal-overlay{
+position:fixed;
+inset:0;
+background:#0009;
+backdrop-filter:blur(4px);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:20;
+padding:16px
+}
+.modal-content{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:20px;
+width:100%;
+max-width:550px;
+padding:28px;
+max-height:90vh;
+overflow:auto
+}
+.modal-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:22px
+}
+.modal-header h3{font-size:20px}
+.close-btn{
+background:none;
+border:0;
+font-size:30px;
+color:var(--muted);
+cursor:pointer
+}
+.modal-actions{margin-top:20px}
+.empty-state{
+display:none;
+text-align:center;
+padding:45px 10px;
+color:var(--muted)
+}
+.empty-state i{
+font-size:45px;
+margin-bottom:15px
+}
+.footer{
+text-align:center;
+padding:25px;
+color:var(--muted);
+border-top:1px solid var(--border)
+}
+@media(max-width:900px){
+.hero-container{
+grid-template-columns:1fr;
+text-align:center
+}
+.hero-subtitle{
+margin-left:auto;
+margin-right:auto
+}
+.hero-buttons{justify-content:center}
+.hero-visual{display:none}
+.stats-bar{grid-template-columns:1fr}
+.nav-links{display:none}
+}
+@media(max-width:600px){
+.form-section,.schedule-section{padding:20px}
+.form-grid{grid-template-columns:1fr}
+.full-width{grid-column:span 1}
+.hero-section{padding:48px 20px}
+.stat-card{padding:16px}
+.section-header h2{font-size:19px}
+.filter-controls{align-items:stretch}
+.filter-type-group{width:100%}
+}
+</style>
 </head>
+
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="nav-container">
-            <div class="brand">
-                <div class="brand-icon">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                </div>
-                <span class="brand-text">Maktab<b>Jadvali</b></span>
-            </div>
-            
-            <nav class="nav-links">
-                <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
-                <a href="#schedule-section" class="nav-link"><i class="fa-solid fa-calendar-days"></i> Jadval</a>
-                <a href="#add-form-section" class="nav-link"><i class="fa-solid fa-circle-plus"></i> Yangi qo'shish</a>
-            </nav>
+<header class="navbar">
+<div class="nav-container">
+<div class="brand">
+<div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+<span>Maktab<b>Jadvali</b></span>
+</div>
 
-            <div class="nav-actions">
-                <button id="themeToggleBtn" class="theme-btn" aria-label="Mavzuni o'zgartirish">
-                    <i class="fa-solid fa-moon"></i>
-                    <span>Tungi rejim</span>
-                </button>
-            </div>
-        </div>
-    </header>
+<nav class="nav-links">
+<a href="#hero" class="nav-link">Bosh sahifa</a>
+<a href="#schedule-section" class="nav-link">Jadval</a>
+<a href="#add-form-section" class="nav-link">Yangi qo'shish</a>
+</nav>
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero-section">
-        <div class="hero-container">
-            <div class="hero-content">
-                <span class="badge"><i class="fa-solid fa-sparkles"></i> MAKTAB VA TO'GARAKLAR · 2026</span>
-                <h1 class="hero-title">Dars va to'garak jadvali endi <span>telefoningizda</span></h1>
-                <p class="hero-subtitle">Jadval faqat devorda edi — endi uni uyda va yo'lda ham osongina ko'rib turasiz hamda oz vaqtingizni unumli boshqarasiz.</p>
-                <div class="hero-buttons">
-                    <a href="#add-form-section" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Mashg'ulot qo'shish</a>
-                    <a href="#schedule-section" class="btn btn-outline"><i class="fa-solid fa-eye"></i> Jadvalni ko'rish</a>
-                </div>
-            </div>
+<button id="themeToggleBtn" class="theme-btn">
+<i class="fa-solid fa-moon"></i>
+<span>Tungi rejim</span>
+</button>
+</div>
+</header>
 
-            <div class="hero-visual">
-                <div class="phone-mockup">
-                    <div class="phone-header">
-                        <span class="notch"></span>
-                        <span class="time">19:14</span>
-                    </div>
-                    <div class="phone-screen">
-                        <div class="phone-card demo-card-1">
-                            <i class="fa-solid fa-book-open"></i>
-                            <div>
-                                <h4>Matematika</h4>
-                                <p>08:30 - 09:15 · 12-xona</p>
-                            </div>
-                        </div>
-                        <div class="phone-card demo-card-2">
-                            <i class="fa-solid fa-robot"></i>
-                            <div>
-                                <h4>Robototexnika</h4>
-                                <p>15:00 - 16:30 · 204-xona</p>
-                            </div>
-                        </div>
-                        <div class="phone-card demo-card-3">
-                            <i class="fa-solid fa-chess"></i>
-                            <div>
-                                <h4>Shaxmat to'garagi</h4>
-                                <p>16:30 - 17:30 · 112-xona</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="hero" class="hero-section">
+<div class="hero-container">
+<div>
+<span class="badge">
+<i class="fa-solid fa-sparkles"></i>
+MAKTAB VA TO'GARAKLAR · 2026
+</span>
 
-    <!-- MAIN CONTAINER -->
-    <main class="main-container">
+<h1 class="hero-title">
+Dars va to'garak jadvali endi
+<span>telefoningizda</span>
+</h1>
 
-        <!-- STATS BAR -->
-        <div class="stats-bar">
-            <div class="stat-card">
-                <i class="fa-solid fa-list-check"></i>
-                <div>
-                    <h3 id="statTotal">0</h3>
-                    <p>Jami mashg'ulotlar</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <i class="fa-solid fa-book-open"></i>
-                <div>
-                    <h3 id="statLessons">0</h3>
-                    <p>Maktab darslari</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <i class="fa-solid fa-puzzle-piece"></i>
-                <div>
-                    <h3 id="statClubs">0</h3>
-                    <p>To'garaklar</p>
-                </div>
-            </div>
-        </div>
+<p class="hero-subtitle">
+Jadval faqat devorda edi — endi uni uyda va yo'lda ham osongina ko'rib turasiz hamda vaqtingizni unumli boshqarasiz.
+</p>
 
-        <!-- FORM SECTION -->
-        <section id="add-form-section" class="form-section">
-            <div class="section-header">
-                <h2><i class="fa-solid fa-calendar-plus"></i> Yangi dars yoki to'garak qo'shish</h2>
-                <p>Jadvalga yangi mashg'ulot kiritish uchun quyidagi formani to'ldiring</p>
-            </div>
+<div class="hero-buttons">
+<a href="#add-form-section" class="btn btn-primary">
+<i class="fa-solid fa-plus"></i> Mashg'ulot qo'shish
+</a>
 
-            <form id="scheduleForm" class="schedule-form">
-                <div class="form-grid">
-                    <div class="input-group">
-                        <label for="title"><i class="fa-solid fa-pen"></i> Nomi / Fan nomi</label>
-                        <input type="text" id="title" placeholder="Masalan: Fizika yoki Robototexnika" required>
-                    </div>
+<a href="#schedule-section" class="btn btn-outline">
+<i class="fa-solid fa-eye"></i> Jadvalni ko'rish
+</a>
+</div>
+</div>
 
-                    <div class="input-group">
-                        <label for="type"><i class="fa-solid fa-layer-group"></i> Turi</label>
-                        <select id="type" required>
-                            <option value="dars">📚 Maktab Darsi</option>
-                            <option value="togarak">🧩 To'garak</option>
-                        </select>
-                    </div>
+<div class="hero-visual">
+<div class="phone-mockup">
+<div class="phone-header">
+<span class="notch"></span>
+<span>19:14</span>
+</div>
 
-                    <div class="input-group">
-                        <label for="day"><i class="fa-solid fa-calendar-day"></i> Hafta kuni</label>
-                        <select id="day" required>
-                            <option value="Dushanba">Dushanba</option>
-                            <option value="Seshanba">Seshanba</option>
-                            <option value="Chorshanba">Chorshanba</option>
-                            <option value="Payshanba">Payshanba</option>
-                            <option value="Juma">Juma</option>
-                            <option value="Shanba">Shanba</option>
-                            <option value="Yakshanba">Yakshanba</option>
-                        </select>
-                    </div>
+<div class="phone-screen">
+<div class="phone-card">
+<i class="fa-solid fa-book-open"></i>
+<div>
+<h4>Matematika</h4>
+<p>08:30 - 09:15 · 12-xona</p>
+</div>
+</div>
 
-                    <div class="input-group">
-                        <label for="startTime"><i class="fa-regular fa-clock"></i> Boshlanish vaqti</label>
-                        <input type="time" id="startTime" required>
-                    </div>
+<div class="phone-card">
+<i class="fa-solid fa-robot"></i>
+<div>
+<h4>Robototexnika</h4>
+<p>15:00 - 16:30 · 204-xona</p>
+</div>
+</div>
 
-                    <div class="input-group">
-                        <label for="endTime"><i class="fa-solid fa-clock"></i> Tugash vaqti</label>
-                        <input type="time" id="endTime" required>
-                    </div>
+<div class="phone-card">
+<i class="fa-solid fa-chess"></i>
+<div>
+<h4>Shaxmat to'garagi</h4>
+<p>16:30 - 17:30 · 112-xona</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-                    <div class="input-group">
-                        <label for="room"><i class="fa-solid fa-location-dot"></i> Xona / Joy</label>
-                        <input type="text" id="room" placeholder="Masalan: 204-xona yoki Sport zal" required>
-                    </div>
+<main class="main-container">
 
-                    <div class="input-group full-width">
-                        <label for="teacher"><i class="fa-solid fa-user-tie"></i> O'qituvchi / Murabbiy (ixtiyoriy)</label>
-                        <input type="text" id="teacher" placeholder="Masalan: Alimov A.A.">
-                    </div>
-                </div>
+<div class="stats-bar">
+<div class="stat-card">
+<i class="fa-solid fa-list-check"></i>
+<div>
+<h3 id="statTotal">0</h3>
+<p>Jami mashg'ulotlar</p>
+</div>
+</div>
 
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-submit">
-                        <i class="fa-solid fa-check"></i> Saqlash
-                    </button>
-                    <button type="reset" class="btn btn-reset">
-                        <i class="fa-solid fa-rotate-left"></i> Tozalash
-                    </button>
-                </div>
-            </form>
-        </section>
+<div class="stat-card">
+<i class="fa-solid fa-book-open"></i>
+<div>
+<h3 id="statLessons">0</h3>
+<p>Maktab darslari</p>
+</div>
+</div>
 
-        <!-- SCHEDULE SECTION -->
-        <section id="schedule-section" class="schedule-section">
-            <div class="section-header">
-                <h2><i class="fa-solid fa-calendar-days"></i> Dars va To'garak Jadvali</h2>
-                <p>Kunlar bo'yicha ajratilgan darslar va to'garaklar</p>
-            </div>
+<div class="stat-card">
+<i class="fa-solid fa-puzzle-piece"></i>
+<div>
+<h3 id="statClubs">0</h3>
+<p>To'garaklar</p>
+</div>
+</div>
+</div>
 
-            <!-- FILTERS -->
-            <div class="filter-controls">
-                <div class="filter-group">
-                    <button class="filter-btn active" data-day="all">Barcha kunlar</button>
-                    <button class="filter-btn" data-day="Dushanba">Dush</button>
-                    <button class="filter-btn" data-day="Seshanba">Sesh</button>
-                    <button class="filter-btn" data-day="Chorshanba">Chor</button>
-                    <button class="filter-btn" data-day="Payshanba">Pay</button>
-                    <button class="filter-btn" data-day="Juma">Juma</button>
-                    <button class="filter-btn" data-day="Shanba">Shan</button>
-                    <button class="filter-btn" data-day="Yakshanba">Yak</button>
-                </div>
+<section id="add-form-section" class="form-section">
+<div class="section-header">
+<h2>
+<i class="fa-solid fa-calendar-plus"></i>
+Yangi dars yoki to'garak qo'shish
+</h2>
+<p>Jadvalga yangi mashg'ulot kiritish uchun quyidagi formani to'ldiring.</p>
+</div>
 
-                <div class="filter-type-group">
-                    <select id="typeFilter">
-                        <option value="all">Barcha turlar</option>
-                        <option value="dars">Faqat Darslar</option>
-                        <option value="togarak">Faqat To'garaklar</option>
-                    </select>
-                </div>
-            </div>
+<form id="scheduleForm">
+<div class="form-grid">
 
-            <!-- SCHEDULE BY DAYS CONTAINER -->
-            <div id="daysContainer" class="days-container">
-                <!-- JavaScript orqali har bir kun alohida blok bo'lib chiqadi -->
-            </div>
+<div class="input-group">
+<label for="title">Nomi / Fan nomi</label>
+<input id="title" type="text" placeholder="Masalan: Fizika yoki Robototexnika" required>
+</div>
 
-            <!-- EMPTY STATE -->
-            <div id="emptyState" class="empty-state">
-                <i class="fa-regular fa-folder-open"></i>
-                <h3>Hozircha hech qanday dars yoki to'garak yo'q</h3>
-                <p>Yuqoridagi shakl orqali birinchi mashg'ulotni qo'shing.</p>
-            </div>
-        </section>
-    </main>
+<div class="input-group">
+<label for="type">Turi</label>
+<select id="type">
+<option value="dars">📚 Maktab darsi</option>
+<option value="togarak">🧩 To'garak</option>
+</select>
+</div>
 
-    <!-- EDIT MODAL -->
-    <div id="editModal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fa-solid fa-pen-to-square"></i> Mashg'ulotni O'zgartirish</h3>
-                <button id="closeModalBtn" class="close-btn">&times;</button>
-            </div>
-            <form id="editForm" class="edit-form">
-                <input type="hidden" id="editId">
-                <div class="form-grid">
-                    <div class="input-group full-width">
-                        <label for="editTitle"><i class="fa-solid fa-pen"></i> Nomi / Fan nomi</label>
-                        <input type="text" id="editTitle" required>
-                    </div>
+<div class="input-group">
+<label for="day">Hafta kuni</label>
+<select id="day">
+<option>Dushanba</option>
+<option>Seshanba</option>
+<option>Chorshanba</option>
+<option>Payshanba</option>
+<option>Juma</option>
+<option>Shanba</option>
+<option>Yakshanba</option>
+</select>
+</div>
 
-                    <div class="input-group">
-                        <label for="editType"><i class="fa-solid fa-layer-group"></i> Turi</label>
-                        <select id="editType" required>
-                            <option value="dars">📚 Maktab Darsi</option>
-                            <option value="togarak">🧩 To'garak</option>
-                        </select>
-                    </div>
+<div class="input-group">
+<label for="startTime">Boshlanish vaqti</label>
+<input id="startTime" type="time" required>
+</div>
 
-                    <div class="input-group">
-                        <label for="editDay"><i class="fa-solid fa-calendar-day"></i> Hafta kuni</label>
-                        <select id="editDay" required>
-                            <option value="Dushanba">Dushanba</option>
-                            <option value="Seshanba">Seshanba</option>
-                            <option value="Chorshanba">Chorshanba</option>
-                            <option value="Payshanba">Payshanba</option>
-                            <option value="Juma">Juma</option>
-                            <option value="Shanba">Shanba</option>
-                            <option value="Yakshanba">Yakshanba</option>
-                        </select>
-                    </div>
+<div class="input-group">
+<label for="endTime">Tugash vaqti</label>
+<input id="endTime" type="time" required>
+</div>
 
-                    <div class="input-group">
-                        <label for="editStartTime"><i class="fa-regular fa-clock"></i> Boshlanish vaqti</label>
-                        <input type="time" id="editStartTime" required>
-                    </div>
+<div class="input-group">
+<label for="room">Xona / Joy</label>
+<input id="room" type="text" placeholder="Masalan: 204-xona" required>
+</div>
 
-                    <div class="input-group">
-                        <label for="editEndTime"><i class="fa-solid fa-clock"></i> Tugash vaqti</label>
-                        <input type="time" id="editEndTime" required>
-                    </div>
+<div class="input-group full-width">
+<label for="teacher">O'qituvchi / Murabbiy (ixtiyoriy)</label>
+<input id="teacher" type="text" placeholder="Masalan: Alimov A.A.">
+</div>
 
-                    <div class="input-group full-width">
-                        <label for="editRoom"><i class="fa-solid fa-location-dot"></i> Xona / Joy</label>
-                        <input type="text" id="editRoom" required>
-                    </div>
+</div>
 
-                    <div class="input-group full-width">
-                        <label for="editTeacher"><i class="fa-solid fa-user-tie"></i> O'qituvchi / Murabbiy</label>
-                        <input type="text" id="editTeacher">
-                    </div>
-                </div>
+<div class="form-actions">
+<button class="btn btn-submit" type="submit">
+<i class="fa-solid fa-check"></i> Saqlash
+</button>
 
-                <div class="modal-actions">
-                    <button type="submit" class="btn btn-submit"><i class="fa-solid fa-floppy-disk"></i> O'zgarishlarni saqlash</button>
-                    <button type="button" id="cancelModalBtn" class="btn btn-reset">Bekor qilish</button>
-                </div>
-            </form>
-        </div>
-    </div>
+<button class="btn btn-reset" type="reset">
+<i class="fa-solid fa-rotate-left"></i> Tozalash
+</button>
+</div>
+</form>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <p>To'garak va Dars Jadvali · 2026</p>
-    </footer>
+<section id="schedule-section" class="schedule-section">
+<div class="section-header">
+<h2>
+<i class="fa-solid fa-calendar-days"></i>
+Dars va To'garak Jadvali
+</h2>
+<p>Kunlar bo'yicha ajratilgan darslar va to'garaklar.</p>
+</div>
 
-    <script src="script.js"></script>
+<div class="filter-controls">
+
+<div class="filter-group">
+<button class="filter-btn active" data-day="all">Barcha kunlar</button>
+<button class="filter-btn" data-day="Dushanba">Dush</button>
+<button class="filter-btn" data-day="Seshanba">Sesh</button>
+<button class="filter-btn" data-day="Chorshanba">Chor</button>
+<button class="filter-btn" data-day="Payshanba">Pay</button>
+<button class="filter-btn" data-day="Juma">Juma</button>
+<button class="filter-btn" data-day="Shanba">Shan</button>
+<button class="filter-btn" data-day="Yakshanba">Yak</button>
+</div>
+
+<div class="filter-type-group">
+<select id="typeFilter">
+<option value="all">Barcha turlar</option>
+<option value="dars">Faqat darslar</option>
+<option value="togarak">Faqat to'garaklar</option>
+</select>
+</div>
+
+</div>
+
+<div id="daysContainer" class="days-container"></div>
+
+<div id="emptyState" class="empty-state">
+<i class="fa-regular fa-folder-open"></i>
+<h3>Hozircha hech qanday dars yoki to'garak yo'q</h3>
+<p>Yuqoridagi shakl orqali birinchi mashg'ulotni qo'shing.</p>
+</div>
+</section>
+
+</main>
+
+<div id="editModal" class="modal-overlay">
+<div class="modal-content">
+
+<div class="modal-header">
+<h3>
+<i class="fa-solid fa-pen-to-square"></i>
+Mashg'ulotni o'zgartirish
+</h3>
+<button id="closeModalBtn" class="close-btn">&times;</button>
+</div>
+
+<form id="editForm">
+<input type="hidden" id="editId">
+
+<div class="form-grid">
+
+<div class="input-group full-width">
+<label for="editTitle">Nomi / Fan nomi</label>
+<input id="editTitle" required>
+</div>
+
+<div class="input-group">
+<label for="editType">Turi</label>
+<select id="editType">
+<option value="dars">📚 Maktab darsi</option>
+<option value="togarak">🧩 To'garak</option>
+</select>
+</div>
+
+<div class="input-group">
+<label for="editDay">Hafta kuni</label>
+<select id="editDay">
+<option>Dushanba</option>
+<option>Seshanba</option>
+<option>Chorshanba</option>
+<option>Payshanba</option>
+<option>Juma</option>
+<option>Shanba</option>
+<option>Yakshanba</option>
+</select>
+</div>
+
+<div class="input-group">
+<label for="editStartTime">Boshlanish vaqti</label>
+<input id="editStartTime" type="time" required>
+</div>
+
+<div class="input-group">
+<label for="editEndTime">Tugash vaqti</label>
+<input id="editEndTime" type="time" required>
+</div>
+
+<div class="input-group full-width">
+<label for="editRoom">Xona / Joy</label>
+<input id="editRoom" required>
+</div>
+
+<div class="input-group full-width">
+<label for="editTeacher">O'qituvchi / Murabbiy</label>
+<input id="editTeacher">
+</div>
+
+</div>
+
+<div class="modal-actions">
+<button class="btn btn-submit" type="submit">
+<i class="fa-solid fa-floppy-disk"></i>
+O'zgarishlarni saqlash
+</button>
+
+<button class="btn btn-reset" type="button" id="cancelModalBtn">
+Bekor qilish
+</button>
+</div>
+
+</form>
+</div>
+</div>
+
+<footer class="footer">
+<p>To'garak va Dars Jadvali · 2026</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+
+let schedule=JSON.parse(localStorage.getItem('mySchedule'))||[];
+let currentDayFilter='all';
+let currentTypeFilter='all';
+
+const daysOrder=[
+'Dushanba',
+'Seshanba',
+'Chorshanba',
+'Payshanba',
+'Juma',
+'Shanba',
+'Yakshanba'
+];
+
+const $=id=>document.getElementById(id);
+
+const themeToggleBtn=$('themeToggleBtn');
+const scheduleForm=$('scheduleForm');
+const daysContainer=$('daysContainer');
+const emptyState=$('emptyState');
+const filterBtns=document.querySelectorAll('.filter-btn');
+const typeFilterSelect=$('typeFilter');
+const editModal=$('editModal');
+const editForm=$('editForm');
+
+function setTheme(theme){
+document.documentElement.setAttribute('data-theme',theme);
+localStorage.setItem('theme',theme);
+
+themeToggleBtn.innerHTML=theme==='dark'
+?'<i class="fa-solid fa-sun"></i> <span>Kunduzgi rejim</span>'
+:'<i class="fa-solid fa-moon"></i> <span>Tungi rejim</span>';
+}
+
+setTheme(localStorage.getItem('theme')||'light');
+
+themeToggleBtn.addEventListener('click',()=>{
+setTheme(
+document.documentElement.getAttribute('data-theme')==='dark'
+?'light'
+:'dark'
+);
+});
+
+scheduleForm.addEventListener('submit',e=>{
+e.preventDefault();
+
+schedule.push({
+id:Date.now(),
+title:$('title').value.trim(),
+type:$('type').value,
+day:$('day').value,
+startTime:$('startTime').value,
+endTime:$('endTime').value,
+room:$('room').value.trim(),
+teacher:$('teacher').value.trim()
+});
+
+saveAndRender();
+scheduleForm.reset();
+});
+
+window.openEditModal=id=>{
+
+const item=schedule.find(i=>i.id===id);
+
+if(!item)return;
+
+$('editId').value=item.id;
+$('editTitle').value=item.title;
+$('editType').value=item.type;
+$('editDay').value=item.day;
+$('editStartTime').value=item.startTime;
+$('editEndTime').value=item.endTime;
+$('editRoom').value=item.room;
+$('editTeacher').value=item.teacher||'';
+
+editModal.style.display='flex';
+};
+
+function closeEditModal(){
+editModal.style.display='none';
+editForm.reset();
+}
+
+$('closeModalBtn').addEventListener('click',closeEditModal);
+$('cancelModalBtn').addEventListener('click',closeEditModal);
+
+editModal.addEventListener('click',e=>{
+if(e.target===editModal)closeEditModal();
+});
+
+editForm.addEventListener('submit',e=>{
+e.preventDefault();
+
+const id=Number($('editId').value);
+const index=schedule.findIndex(i=>i.id===id);
+
+if(index!==-1){
+
+schedule[index]={
+id,
+title:$('editTitle').value.trim(),
+type:$('editType').value,
+day:$('editDay').value,
+startTime:$('editStartTime').value,
+endTime:$('editEndTime').value,
+room:$('editRoom').value.trim(),
+teacher:$('editTeacher').value.trim()
+};
+
+saveAndRender();
+closeEditModal();
+}
+});
+
+window.deleteItem=id=>{
+
+if(confirm("Ushbu mashg'ulotni o'chirishni xohlaysizmi?")){
+
+schedule=schedule.filter(item=>item.id!==id);
+
+saveAndRender();
+}
+};
+
+function render(){
+
+daysContainer.innerHTML='';
+
+const filtered=schedule.filter(item=>
+(currentDayFilter==='all'||item.day===currentDayFilter)&&
+(currentTypeFilter==='all'||item.type===currentTypeFilter)
+);
+
+emptyState.style.display=filtered.length===0?'block':'none';
+
+daysOrder.forEach(dayName=>{
+
+const items=filtered
+.filter(i=>i.day===dayName)
+.sort((a,b)=>a.startTime.localeCompare(b.startTime));
+
+if(!items.length)return;
+
+const section=document.createElement('div');
+section.className='day-section';
+
+let cards='';
+
+items.forEach(item=>{
+
+const isDars=item.type==='dars';
+
+const tagClass=isDars?'tag-dars':'tag-togarak';
+const tagText=isDars?'Maktab darsi':"To'garak";
+
+cards+=`
+<div class="card">
+
+<div>
+<span class="card-tag ${tagClass}">${tagText}</span>
+
+<h3 class="card-title">${escapeHtml(item.title)}</h3>
+
+<div class="card-info">
+
+<div>
+<i class="fa-regular fa-clock"></i>
+<b>${escapeHtml(item.startTime)} - ${escapeHtml(item.endTime)}</b>
+</div>
+
+<div>
+<i class="fa-solid fa-location-dot"></i>
+${escapeHtml(item.room)}
+</div>
+
+${item.teacher?`
+<div>
+<i class="fa-solid fa-user-tie"></i>
+${escapeHtml(item.teacher)}
+</div>
+`:''}
+
+</div>
+</div>
+
+<div class="card-bottom-actions">
+
+<button class="btn-card-edit" onclick="openEditModal(${item.id})">
+<i class="fa-solid fa-pen-to-square"></i>
+O'zgartirish
+</button>
+
+<button class="btn-card-delete" onclick="deleteItem(${item.id})" title="O'chirish">
+<i class="fa-solid fa-trash-can"></i>
+</button>
+
+</div>
+</div>
+`;
+});
+
+section.innerHTML=`
+<div class="day-header">
+<i class="fa-solid fa-calendar-day"></i>
+${dayName}
+</div>
+
+<div class="cards-grid">
+${cards}
+</div>
+`;
+
+daysContainer.appendChild(section);
+
+});
+
+updateStats();
+}
+
+function escapeHtml(value){
+
+return String(value).replace(/[&<>"']/g,ch=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#39;'
+}[ch]));
+
+}
+
+function updateStats(){
+
+$('statTotal').textContent=schedule.length;
+
+$('statLessons').textContent=
+schedule.filter(i=>i.type==='dars').length;
+
+$('statClubs').textContent=
+schedule.filter(i=>i.type==='togarak').length;
+
+}
+
+function saveAndRender(){
+
+localStorage.setItem('mySchedule',JSON.stringify(schedule));
+
+render();
+}
+
+filterBtns.forEach(btn=>{
+
+btn.addEventListener('click',()=>{
+
+filterBtns.forEach(b=>b.classList.remove('active'));
+
+btn.classList.add('active');
+
+currentDayFilter=btn.dataset.day;
+
+render();
+
+});
+
+});
+
+typeFilterSelect.addEventListener('change',e=>{
+
+currentTypeFilter=e.target.value;
+
+render();
+
+});
+
+render();
+
+});
+</script>
+
 </body>
 </html>

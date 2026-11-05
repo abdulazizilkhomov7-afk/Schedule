@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maktab va To'garak Jadvali</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span class="brand-text">Maktab<b>Jadvali</b></span>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+                <a href="#schedule-section" class="nav-link"><i class="fa-solid fa-calendar-days"></i> Jadval</a>
+                <a href="#add-form-section" class="nav-link"><i class="fa-solid fa-circle-plus"></i> Yangi qo'shish</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="themeToggleBtn" class="theme-btn" aria-label="Mavzuni o'zgartirish">
+                    <i class="fa-solid fa-moon"></i>
+                    <span>Tungi rejim</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="badge"><i class="fa-solid fa-sparkles"></i> MAKTAB VA TO'GARAKLAR · 2026</span>
+                <h1 class="hero-title">Dars va to'garak jadvali endi <span>telefoningizda</span></h1>
+                <p class="hero-subtitle">Jadval faqat devorda edi — endi uni uyda va yo'lda ham osongina ko'rib turasiz hamda oz vaqtingizni unumli boshqarasiz.</p>
+                <div class="hero-buttons">
+                    <a href="#add-form-section" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Mashg'ulot qo'shish</a>
+                    <a href="#schedule-section" class="btn btn-outline"><i class="fa-solid fa-eye"></i> Jadvalni ko'rish</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-header">
+                        <span class="notch"></span>
+                        <span class="time">19:14</span>
+                    </div>
+                    <div class="phone-screen">
+                        <div class="phone-card demo-card-1">
+                            <i class="fa-solid fa-book-open"></i>
+                            <div>
+                                <h4>Matematika</h4>
+                                <p>08:30 - 09:15 · 12-xona</p>
+                            </div>
+                        </div>
+                        <div class="phone-card demo-card-2">
+                            <i class="fa-solid fa-robot"></i>
+                            <div>
+                                <h4>Robototexnika</h4>
+                                <p>15:00 - 16:30 · 204-xona</p>
+                            </div>
+                        </div>
+                        <div class="phone-card demo-card-3">
+                            <i class="fa-solid fa-chess"></i>
+                            <div>
+                                <h4>Shaxmat to'garagi</h4>
+                                <p>16:30 - 17:30 · 112-xona</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTAINER -->
+    <main class="main-container">
+
+        <!-- STATS BAR -->
+        <div class="stats-bar">
+            <div class="stat-card">
+                <i class="fa-solid fa-list-check"></i>
+                <div>
+                    <h3 id="statTotal">0</h3>
+                    <p>Jami mashg'ulotlar</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-book-open"></i>
+                <div>
+                    <h3 id="statLessons">0</h3>
+                    <p>Maktab darslari</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-puzzle-piece"></i>
+                <div>
+                    <h3 id="statClubs">0</h3>
+                    <p>To'garaklar</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM SECTION -->
+        <section id="add-form-section" class="form-section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-calendar-plus"></i> Yangi dars yoki to'garak qo'shish</h2>
+                <p>Jadvalga yangi mashg'ulot kiritish uchun quyidagi formani to'ldiring</p>
+            </div>
+
+            <form id="scheduleForm" class="schedule-form">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="title"><i class="fa-solid fa-pen"></i> Nomi / Fan nomi</label>
+                        <input type="text" id="title" placeholder="Masalan: Fizika yoki Robototexnika" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="type"><i class="fa-solid fa-layer-group"></i> Turi</label>
+                        <select id="type" required>
+                            <option value="dars">📚 Maktab Darsi</option>
+                            <option value="togarak">🧩 To'garak</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="day"><i class="fa-solid fa-calendar-day"></i> Hafta kuni</label>
+                        <select id="day" required>
+                            <option value="Dushanba">Dushanba</option>
+                            <option value="Seshanba">Seshanba</option>
+                            <option value="Chorshanba">Chorshanba</option>
+                            <option value="Payshanba">Payshanba</option>
+                            <option value="Juma">Juma</option>
+                            <option value="Shanba">Shanba</option>
+                            <option value="Yakshanba">Yakshanba</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="startTime"><i class="fa-regular fa-clock"></i> Boshlanish vaqti</label>
+                        <input type="time" id="startTime" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="endTime"><i class="fa-solid fa-clock"></i> Tugash vaqti</label>
+                        <input type="time" id="endTime" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="room"><i class="fa-solid fa-location-dot"></i> Xona / Joy</label>
+                        <input type="text" id="room" placeholder="Masalan: 204-xona yoki Sport zal" required>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="teacher"><i class="fa-solid fa-user-tie"></i> O'qituvchi / Murabbiy (ixtiyoriy)</label>
+                        <input type="text" id="teacher" placeholder="Masalan: Alimov A.A.">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fa-solid fa-check"></i> Saqlash
+                    </button>
+                    <button type="reset" class="btn btn-reset">
+                        <i class="fa-solid fa-rotate-left"></i> Tozalash
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- SCHEDULE SECTION -->
+        <section id="schedule-section" class="schedule-section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-calendar-days"></i> Dars va To'garak Jadvali</h2>
+                <p>Kunlar bo'yicha ajratilgan darslar va to'garaklar</p>
+            </div>
+
+            <!-- FILTERS -->
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-day="all">Barcha kunlar</button>
+                    <button class="filter-btn" data-day="Dushanba">Dush</button>
+                    <button class="filter-btn" data-day="Seshanba">Sesh</button>
+                    <button class="filter-btn" data-day="Chorshanba">Chor</button>
+                    <button class="filter-btn" data-day="Payshanba">Pay</button>
+                    <button class="filter-btn" data-day="Juma">Juma</button>
+                    <button class="filter-btn" data-day="Shanba">Shan</button>
+                    <button class="filter-btn" data-day="Yakshanba">Yak</button>
+                </div>
+
+                <div class="filter-type-group">
+                    <select id="typeFilter">
+                        <option value="all">Barcha turlar</option>
+                        <option value="dars">Faqat Darslar</option>
+                        <option value="togarak">Faqat To'garaklar</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- SCHEDULE BY DAYS CONTAINER -->
+            <div id="daysContainer" class="days-container">
+                <!-- JavaScript orqali har bir kun alohida blok bo'lib chiqadi -->
+            </div>
+
+            <!-- EMPTY STATE -->
+            <div id="emptyState" class="empty-state">
+                <i class="fa-regular fa-folder-open"></i>
+                <h3>Hozircha hech qanday dars yoki to'garak yo'q</h3>
+                <p>Yuqoridagi shakl orqali birinchi mashg'ulotni qo'shing.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- EDIT MODAL -->
+    <div id="editModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-pen-to-square"></i> Mashg'ulotni O'zgartirish</h3>
+                <button id="closeModalBtn" class="close-btn">&times;</button>
+            </div>
+            <form id="editForm" class="edit-form">
+                <input type="hidden" id="editId">
+                <div class="form-grid">
+                    <div class="input-group full-width">
+                        <label for="editTitle"><i class="fa-solid fa-pen"></i> Nomi / Fan nomi</label>
+                        <input type="text" id="editTitle" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="editType"><i class="fa-solid fa-layer-group"></i> Turi</label>
+                        <select id="editType" required>
+                            <option value="dars">📚 Maktab Darsi</option>
+                            <option value="togarak">🧩 To'garak</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="editDay"><i class="fa-solid fa-calendar-day"></i> Hafta kuni</label>
+                        <select id="editDay" required>
+                            <option value="Dushanba">Dushanba</option>
+                            <option value="Seshanba">Seshanba</option>
+                            <option value="Chorshanba">Chorshanba</option>
+                            <option value="Payshanba">Payshanba</option>
+                            <option value="Juma">Juma</option>
+                            <option value="Shanba">Shanba</option>
+                            <option value="Yakshanba">Yakshanba</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="editStartTime"><i class="fa-regular fa-clock"></i> Boshlanish vaqti</label>
+                        <input type="time" id="editStartTime" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="editEndTime"><i class="fa-solid fa-clock"></i> Tugash vaqti</label>
+                        <input type="time" id="editEndTime" required>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="editRoom"><i class="fa-solid fa-location-dot"></i> Xona / Joy</label>
+                        <input type="text" id="editRoom" required>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="editTeacher"><i class="fa-solid fa-user-tie"></i> O'qituvchi / Murabbiy</label>
+                        <input type="text" id="editTeacher">
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-submit"><i class="fa-solid fa-floppy-disk"></i> O'zgarishlarni saqlash</button>
+                    <button type="button" id="cancelModalBtn" class="btn btn-reset">Bekor qilish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>To'garak va Dars Jadvali · 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
